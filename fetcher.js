@@ -11,7 +11,8 @@ request(url, (error, response, body) => {
   const data = new Uint8Array(Buffer.from(body));
   fs.writeFile(path, data, (err) => {
   if (err) throw err;
-  console.log('Downloaded and saved file');  //todo bytes
+  let size = fs.statSync(path).size;
+  console.log(`Downloaded and saved ${size} bytes to ${path}`);  //todo bytes
 });
 
 });
